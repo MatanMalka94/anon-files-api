@@ -14,7 +14,7 @@ const AnonFiles = require('anon-files-api')
 ```
 
 # Usage
-### get(id)
+### getInfo(id)
 Gets info about a file.
 ### Example:
 ```js
