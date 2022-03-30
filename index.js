@@ -7,7 +7,7 @@ var FormData = require('form-data');
 
 class AnonFiles {
 
-    async get(id) {
+    async getInfo(id) {
         const response = await fetch(`https://api.anonfiles.com/v2/file/${id}/info`);
         return await response.json();
     }
@@ -29,16 +29,17 @@ class AnonFiles {
         }
         const response = await fetch(fileURL);
         var data = await response.text();
-        let url = extractRawURL(data);
-        path = path || extractFileName(data)
+        let url = this.extractRawURL(data);
+        path = path || this.extractFileName(data)
 
         const fileDownload = await fetch(url);
         const fileStream = fs.createWriteStream(path);
-        await new Promise((resolve, reject) => {
+        return await new Promise((resolve, reject) => {
             fileDownload.body.pipe(fileStream);
-            fileDownload.body.on('error', reject);
-            fileStream.on('finish', resolve);
-        });
+            fileDownload.body.on('error', reject({ status: 'FAILED' }))
+            fileStream.on('finish', resolve({ status: 'OK', file_path: path }));
+        }).catch(err => { return err });
+
     }
 
     extractRawURL(websiteData) {

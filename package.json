@@ -1,6 +1,6 @@
 {
     "name": "anon-files-api",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "This unofficial Nodejs API was created to make uploading and downloading files from <anonfiles.com> simple and effective for programming in Nodejs. The goal of the project is to create an intuitive library for anonymous file sharing.",
     "main": "index.js",
     "scripts": {
