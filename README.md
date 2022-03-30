@@ -18,7 +18,7 @@ const AnonFiles = require('anon-files-api')
 Gets info about a file.
 ### Example:
 ```js
-var info = await getInfo(id);
+var info = await AnonFiles.getInfo(id);
 ```
 ### upload(file_path)
 Uploads a file to AnonFiles
