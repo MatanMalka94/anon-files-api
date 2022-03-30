@@ -1,6 +1,6 @@
 # anon-files-api
 ### AnonFiles Unofficial API
-This unofficial Nodejs API was created to make uploading and downloading files from &lt;anonfiles.com> simple and effective for programming in Nodejs. The goal of the project is to create an intuitive library for anonymous file sharing.
+This unofficial JavaScript API was created to make uploading and downloading files from &lt;anonfiles.com> simple and effective for programming in JavaScript. The goal of the project is to create an intuitive library for anonymous file sharing.
 
 ### Installing
 
