@@ -7,12 +7,12 @@ var FormData = require('form-data');
 
 class AnonFiles {
 
-    static async get(id) {
+    async get(id) {
         const response = await fetch(`https://api.anonfiles.com/v2/file/${id}/info`);
         return await response.json();
     }
 
-    static async upload(path) {
+    async upload(path) {
         let data = new FormData();
         data.append('file', fs.createReadStream(path));
         const response = await fetch('https://api.anonfiles.com/upload', {
@@ -23,9 +23,9 @@ class AnonFiles {
 
     }
 
-    static async download(fileURL, path) {
+    async download(fileURL, path) {
         if (!/((http|https):\/\/)(www.)?anonfiles\.com\b([-a-zA-Z0-9@:%._\+~#?&//=]*)/.test(fileURL)) {
-            fileURL = (await get(fileURL))['data']['file']['url']['full'];
+            fileURL = (await this.get(fileURL))['data']['file']['url']['full'];
         }
         const response = await fetch(fileURL);
         var data = await response.text();
@@ -41,13 +41,13 @@ class AnonFiles {
         });
     }
 
-    static extractRawURL(websiteData) {
+    extractRawURL(websiteData) {
         return websiteData.match(/https:\/\/cdn-[0-9]{3}.anonfiles.com\/[aA-zZ0-9]+\/[aA-zZ0-9]+-[aA-zZ0-9]+\/[^"]+/)[0];
     }
 
-    static extractFileName(websiteData) {
+    extractFileName(websiteData) {
         return websiteData.match(/text-center text-wordwrap">[^<]+/)[0].replace('text-center text-wordwrap">', '');
     }
 }
 
-module.exports = AnonFiles
+module.exports = new AnonFiles()
