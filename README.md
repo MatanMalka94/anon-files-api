@@ -1,5 +1,4 @@
-# anon-files-api
-### AnonFiles Unofficial API
+# Anonfiles.com Unofficial JavaScript API
 This unofficial JavaScript API was created to make uploading and downloading files from &lt;anonfiles.com> simple and effective for programming in JavaScript. The goal of the project is to create an intuitive library for anonymous file sharing.
 
 ### Installing
